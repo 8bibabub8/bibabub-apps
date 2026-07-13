@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bibabub Apps — Hyperliquid-Tracker · RSI-Tracker · Crypto Watch</title>
+<meta name="description" content="Support, Datenschutz und Impressum zu den Apps Hyperliquid-Tracker, RSI-Tracker und Crypto Watch. Support, privacy and legal information for the Hyperliquid Tracker, RSI Tracker and Crypto Watch apps.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAF1E6;
+    --bg-top:#FCEDDD;
+    --card:#FFFFFF;
+    --ink:#33271D;
+    --muted:#8C7A69;
+    --orange:#DE652C;
+    --orange-deep:#C9531F;
+    --line:#F0E1CF;
+    --radius:24px;
+    --shadow:0 2px 4px rgba(90,60,30,.05), 0 12px 28px rgba(90,60,30,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation:none!important;transition:none!important}
+  }
+  body{
+    background:linear-gradient(180deg, var(--bg-top) 0%, var(--bg) 420px);
+    color:var(--ink);
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size:17px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .mono{
+    font-family:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    font-weight:500;
+  }
+  a{color:var(--orange-deep)}
+  a:focus-visible, button:focus-visible{
+    outline:3px solid var(--orange);
+    outline-offset:3px;
+    border-radius:10px;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:0 22px}
+
+  /* Language switching */
+  .en{display:none}
+  html.lang-en .en{display:revert}
+  html.lang-en .de{display:none}
+
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:10;
+    background:rgba(252,238,222,.85);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(240,225,207,.6);
+    padding:16px 0;
+  }
+  .header-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:700;font-size:19px}
+  .dot{width:14px;height:14px;border-radius:50%;background:var(--orange);flex:none}
+  .lang-switch{
+    display:flex;background:var(--card);
+    border-radius:999px;padding:0;overflow:hidden;
+    box-shadow:var(--shadow);
+  }
+  .lang-switch button{
+    border:0;background:transparent;color:var(--muted);
+    font-family:inherit;font-size:15px;font-weight:700;
+    padding:9px 22px;cursor:pointer;border-radius:999px;
+  }
+  .lang-switch button[aria-pressed="true"]{
+    background:linear-gradient(135deg, #E8763B, var(--orange-deep));
+    color:#fff;
+  }
+
+  /* Hero */
+  .hero{padding:64px 0 30px;animation:rise .5s ease both}
+  @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .hero .eyebrow{font-size:13px;color:var(--orange);margin-bottom:22px}
+  h1{
+    font-size:clamp(38px, 9vw, 56px);
+    font-weight:800;line-height:1.06;letter-spacing:-.02em;
+    margin-bottom:22px;
+  }
+  h1 .lead{color:var(--orange);display:block}
+  .hero p{color:var(--muted);font-size:19px;max-width:52ch}
+
+  /* Sections */
+  section{padding:52px 0 6px}
+  .section-eyebrow{
+    display:flex;align-items:center;gap:12px;
+    font-size:12px;color:var(--muted);margin-bottom:20px;
+  }
+  .section-eyebrow .dot{width:11px;height:11px}
+  h2{font-size:clamp(28px, 6vw, 36px);font-weight:800;letter-spacing:-.02em;margin-bottom:14px}
+  .section-intro{color:var(--muted);margin-bottom:24px;max-width:56ch}
+  h3{font-size:18px;font-weight:700;margin:30px 0 10px}
+  section p{margin-bottom:13px}
+  #privacy p.de, #privacy p.en, #impressum p.de, #impressum p.en{color:var(--ink)}
+
+  /* App cards */
+  .card{
+    background:var(--card);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:26px;margin-bottom:18px;
+  }
+  .app-card{display:flex;gap:20px;align-items:flex-start}
+  .app-icon{
+    width:78px;height:78px;border-radius:20px;flex:none;
+    background:linear-gradient(140deg,#F29757 0%, #DE652C 55%, #C9531F 100%);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:inset 0 1px 2px rgba(255,255,255,.4), 0 4px 10px rgba(201,83,31,.25);
+  }
+  .app-icon svg{width:52px;height:44px}
+  .app-label{font-size:12px;color:var(--orange);margin-bottom:6px}
+  .app-name{font-size:22px;font-weight:800;letter-spacing:-.01em;margin-bottom:6px}
+  .app-card p{color:var(--muted);margin-bottom:0}
+
+  .note{
+    font-family:"IBM Plex Mono", ui-monospace, monospace;
+    font-size:14px;color:var(--muted);line-height:1.8;
+    margin:26px 0 0;
+  }
+
+  /* Mail button */
+  .mail-btn{
+    display:inline-block;
+    font-family:"IBM Plex Mono", ui-monospace, monospace;
+    font-size:16px;font-weight:500;letter-spacing:.02em;
+    color:#fff;text-decoration:none;
+    background:linear-gradient(135deg, #E8763B, var(--orange-deep));
+    padding:16px 30px;border-radius:999px;
+    box-shadow:0 6px 16px rgba(201,83,31,.3);
+    margin:6px 0 4px;
+  }
+  .mail-btn:hover{filter:brightness(1.05)}
+
+  /* Fact rows */
+  .facts{display:flex;flex-direction:column;gap:12px;margin:6px 0 10px}
+  .fact{
+    background:var(--card);border-radius:18px;box-shadow:var(--shadow);
+    padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:14px;
+  }
+  .fact .label{font-weight:600;font-size:16px}
+  .pill{
+    font-family:"IBM Plex Mono", ui-monospace, monospace;
+    font-size:13px;letter-spacing:.1em;text-transform:uppercase;
+    padding:5px 14px;border-radius:999px;white-space:nowrap;
+    color:var(--orange-deep);background:#FBE3D2;
+  }
+
+  /* Impressum */
+  .todo{
+    background:#FFF3C9;border:1px dashed #D9A93F;border-radius:8px;
+    padding:1px 9px;white-space:nowrap;
+  }
+  address{font-style:normal;line-height:2.0}
+
+  /* Footer */
+  footer{
+    margin-top:60px;padding:30px 0 48px;border-top:1px solid var(--line);
+    color:var(--muted);font-size:14px;
+  }
+  .foot-row{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  .foot-nav{display:flex;gap:18px;flex-wrap:wrap}
+  .foot-nav a{color:var(--muted);text-decoration:none}
+  .foot-nav a:hover{color:var(--orange-deep)}
+  .updated{margin-top:12px;font-size:13px}
+
+  @media (max-width:480px){
+    .card{padding:22px}
+    .app-card{gap:16px}
+    .app-icon{width:64px;height:64px;border-radius:17px}
+    .app-icon svg{width:42px;height:36px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-row">
+    <div class="brand"><span class="dot" aria-hidden="true"></span>Bibabub Apps</div>
+    <div class="lang-switch" role="group" aria-label="Sprache / Language">
+      <button type="button" id="btn-de" aria-pressed="true" onclick="setLang('de')">DE</button>
+      <button type="button" id="btn-en" aria-pressed="false" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow mono">
+      <span class="de">Tracker für die Märkte</span><span class="en">Trackers for the markets</span>
+    </div>
+    <h1>
+      <span class="de"><span class="lead">Tools</span>für klare Marktdaten.</span>
+      <span class="en"><span class="lead">Tools</span>for clear market data.</span>
+    </h1>
+    <p class="de">Hyperliquid-Tracker, RSI-Tracker und Crypto Watch. Diese Seite enthält Support-, Datenschutz- und Anbieterinformationen zu den Apps.</p>
+    <p class="en">Hyperliquid Tracker, RSI Tracker and Crypto Watch. This page provides support, privacy and legal information for the apps.</p>
+  </div>
+
+  <!-- ============ APPS ============ -->
+  <section id="apps">
+    <div class="section-eyebrow mono"><span class="dot" aria-hidden="true"></span><span class="de">Die Apps</span><span class="en">The apps</span></div>
+
+    <div class="card app-card">
+      <div class="app-icon" aria-hidden="true">
+        <svg viewBox="0 0 52 44"><rect x="1" y="4" width="50" height="36" rx="7" fill="#FDF4EA"/><rect x="1" y="4" width="50" height="9" rx="4.5" fill="#F6E3CE"/><polyline points="8,30 15,24 21,28 28,18 34,23 44,15" fill="none" stroke="#DE652C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div>
+ <!--       <div class="app-label mono">HL · 001</div> -->
+        <div class="app-name">Hyperliquid-Tracker</div>
+        <p class="de">Öffentliche Wallets auf Hyperliquid beobachten: Positionen, Preise und Bewegungen — mit Push-Benachrichtigung bei neuen Trades.</p>
+        <p class="en">Watch public wallets on Hyperliquid: positions, prices and moves — with push notifications for new trades.</p>
+      </div>
+    </div>
+
+    <div class="card app-card">
+      <div class="app-icon" aria-hidden="true">
+        <svg viewBox="0 0 52 44"><rect x="1" y="2" width="50" height="40" rx="7" fill="#FDF4EA"/><path d="M7 30 C 14 12, 20 12, 26 22 S 39 34, 45 16" fill="none" stroke="#DE652C" stroke-width="2.6" stroke-linecap="round"/><line x1="7" y1="12" x2="45" y2="12" stroke="#F0D9BF" stroke-width="1.6" stroke-dasharray="3 3"/><line x1="7" y1="33" x2="45" y2="33" stroke="#F0D9BF" stroke-width="1.6" stroke-dasharray="3 3"/></svg>
+      </div>
+      <div>
+ <!--       <div class="app-label mono">RSI · 002</div> -->
+        <div class="app-name">RSI-Tracker</div>
+        <p class="de">Der Relative-Strength-Index ausgewählter Märkte auf einen Blick.</p>
+        <p class="en">The Relative Strength Index of selected markets at a glance.</p>
+      </div>
+    </div>
+
+    <div class="card app-card">
+      <div class="app-icon" aria-hidden="true">
+        <svg viewBox="0 0 52 44"><rect x="15" y="1" width="22" height="42" rx="8" fill="#FDF4EA"/><rect x="19" y="7" width="14" height="30" rx="4" fill="#F6E3CE"/><polyline points="21,28 25,23 28,26 31,18" fill="none" stroke="#DE652C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div>
+ <!--       <div class="app-label mono">CRY · 003</div> -->
+        <div class="app-name">Crypto Watch</div>
+        <p class="de">Krypto-Kurse direkt auf deiner Apple Watch — jederzeit im Blick.</p>
+        <p class="en">Crypto prices right on your Apple Watch — always at a glance.</p>
+      </div>
+    </div>
+
+    <p class="note">
+      <span class="de">Hinweis: Die Apps dienen ausschließlich der Information und stellen keine Anlageberatung dar. Es werden keine Transaktionen ausgeführt und keine Gelder verwahrt.</span>
+      <span class="en">Note: The apps are for information only and do not constitute investment advice. They do not execute transactions and do not hold funds.</span>
+    </p>
+  </section>
+
+  <!-- ============ SUPPORT ============ -->
+  <section id="support">
+    <div class="section-eyebrow mono"><span class="dot" aria-hidden="true"></span>Support</div>
+    <h2><span class="de">Hilfe &amp; Kontakt</span><span class="en">Help &amp; contact</span></h2>
+    <p class="section-intro de">Bei Fragen, Problemen oder Feedback zu einer der Apps erreichst du uns per E-Mail. Wir antworten in der Regel innerhalb von wenigen Werktagen.</p>
+    <p class="section-intro en">For questions, problems or feedback about any of the apps, reach us by email. We usually reply within a few business days.</p>
+    <a class="mail-btn" href="mailto:8bibabub8@gmail.com">8bibabub8@gmail.com</a>
+  </section>
+
+  <!-- ============ DATENSCHUTZ ============ -->
+  <section id="privacy">
+    <div class="section-eyebrow mono"><span class="dot" aria-hidden="true"></span><span class="de">Datenschutz</span><span class="en">Privacy</span></div>
+    <h2><span class="de">Datenschutzerklärung</span><span class="en">Privacy Policy</span></h2>
+
+    <p class="section-intro de">Alle drei Apps kommen ohne Konto, ohne Tracking und ohne Werbung aus. Es werden keine Daten verkauft und keine Analyse- oder Werbe-SDKs eingesetzt.</p>
+    <p class="section-intro en">All three apps work without an account, without tracking and without ads. No data is sold, and no analytics or advertising SDKs are used.</p>
+
+    <div class="facts">
+      <div class="fact">
+        <span class="label"><span class="de">Konto erforderlich</span><span class="en">Account required</span></span>
+        <span class="pill"><span class="de">Nein</span><span class="en">No</span></span>
+      </div>
+      <div class="fact">
+        <span class="label"><span class="de">Tracking / Analyse</span><span class="en">Tracking / analytics</span></span>
+        <span class="pill"><span class="de">Nein</span><span class="en">No</span></span>
+      </div>
+      <div class="fact">
+        <span class="label"><span class="de">Werbung</span><span class="en">Advertising</span></span>
+        <span class="pill"><span class="de">Nein</span><span class="en">No</span></span>
+      </div>
+      <div class="fact">
+        <span class="label"><span class="de">Verkauf oder Weitergabe zu Werbezwecken</span><span class="en">Sale or sharing for advertising</span></span>
+        <span class="pill"><span class="de">Nein</span><span class="en">No</span></span>
+      </div>
+    </div>
+
+    <h3><span class="de">Hyperliquid-Tracker: Push-Benachrichtigungen</span><span class="en">Hyperliquid Tracker: push notifications</span></h3>
+    <p class="de">Damit Push-Benachrichtigungen zugestellt werden können, speichert der Hyperliquid-Tracker ein anonymes Push-Token deines Geräts sowie die von dir hinzugefügten öffentlichen Wallet-Adressen. Diese Daten werden ausschließlich für die Zustellung der Benachrichtigungen verwendet und nicht mit deinem Namen oder anderen Identitätsmerkmalen verknüpft.</p>
+    <p class="en">To deliver push notifications, Hyperliquid Tracker stores an anonymous push token of your device together with the public wallet addresses you add. This data is used solely to deliver notifications and is not linked to your name or any other identifying information.</p>
+    <p class="de">Zur Verarbeitung setzen wir technische Dienstleister ein: Supabase (Datenbank und Server-Funktionen) sowie Expo und den Apple-Push-Dienst (Zustellung der Benachrichtigungen). Diese Dienstleister verarbeiten die Daten ausschließlich in unserem Auftrag.</p>
+    <p class="en">We use technical service providers for processing: Supabase (database and server functions) as well as Expo and the Apple push service (notification delivery). These providers process the data solely on our behalf.</p>
+    <p class="de">Entfernst du eine Wallet in der App, werden die zugehörigen Daten gelöscht. Nach dem Deinstallieren der App wird das Push-Token ungültig; zusätzlich kannst du die Löschung deiner Daten jederzeit formlos per E-Mail an die oben genannte Support-Adresse verlangen.</p>
+    <p class="en">If you remove a wallet in the app, the associated data is deleted. After uninstalling the app, the push token becomes invalid; you can also request deletion of your data at any time by emailing the support address above.</p>
+
+    <h3><span class="de">RSI-Tracker &amp; Crypto Watch</span><span class="en">RSI Tracker &amp; Crypto Watch</span></h3>
+    <p class="de">Diese beiden Apps erheben, speichern und verarbeiten keine personenbezogenen Daten.</p>
+    <p class="en">These two apps do not collect, store or process any personal data.</p>
+
+    <h3><span class="de">Abruf von Marktdaten</span><span class="en">Retrieving market data</span></h3>
+    <p class="de">Zur Anzeige von Marktdaten rufen die Apps öffentlich verfügbare Kursinformationen von externen Datenquellen ab (z.&nbsp;B. der öffentlichen Hyperliquid-API). Dabei wird technisch bedingt die IP-Adresse deines Geräts an die jeweilige Datenquelle übermittelt; darüber hinaus werden keine persönlichen Informationen übertragen.</p>
+    <p class="en">To display market data, the apps retrieve publicly available price information from external data sources (e.g. the public Hyperliquid API). For technical reasons, your device's IP address is transmitted to the respective data source in the process; no further personal information is transferred.</p>
+
+    <h3><span class="de">Deine Rechte</span><span class="en">Your rights</span></h3>
+    <p class="de">Dir stehen die Rechte auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung nach der DSGVO zu. Wende dich dafür an die oben genannte Support-Adresse. Verantwortlicher im Sinne der DSGVO ist der im Impressum genannte Betreiber.</p>
+    <p class="en">You have the rights to access, rectification, erasure and restriction of processing under the GDPR. To exercise them, contact the support address above. The controller within the meaning of the GDPR is the operator named in the legal notice below.</p>
+    <p class="de">Sollte sich an den beschriebenen Praktiken etwas ändern, wird diese Erklärung aktualisiert.</p>
+    <p class="en">Should any of the practices described here change, this policy will be updated.</p>
+  </section>
+
+  <!-- ============ IMPRESSUM ============ -->
+  <section id="impressum">
+    <div class="section-eyebrow mono"><span class="dot" aria-hidden="true"></span><span class="de">Impressum</span><span class="en">Legal notice</span></div>
+    <h2><span class="de">Impressum</span><span class="en">Legal notice</span></h2>
+    <p class="de">Angaben gemäß §&nbsp;5 DDG:</p>
+    <p class="en">Information in accordance with Section&nbsp;5 of the German Digital Services Act (DDG):</p>
+    <div class="card">
+      <address>
+        <strong>Christian Haas</strong><br>
+        Taborer Str. 15<br>
+        06618 Naumburg, <span class="de">Deutschland</span><span class="en">Germany</span><br>
+        E-Mail: <a href="mailto:8bibabub8@gmail.com">8bibabub8@gmail.com</a>
+      </address>
+    </div>
+    <p class="note de">Inhaltlich verantwortlich für diese Website und die genannten Apps ist der oben aufgeführte Betreiber.</p>
+    <p class="note en">The operator named above is responsible for the content of this website and the apps listed.</p>
+  </section>
+
+  <footer>
+    <div class="foot-row">
+      <span>© 2026 Bibabub Apps</span>
+      <nav class="foot-nav" aria-label="Footer">
+        <a href="#apps">Apps</a>
+        <a href="#support">Support</a>
+        <a href="#privacy"><span class="de">Datenschutz</span><span class="en">Privacy</span></a>
+        <a href="#impressum"><span class="de">Impressum</span><span class="en">Legal</span></a>
+      </nav>
+    </div>
+    <div class="updated">
+      <span class="de">Zuletzt aktualisiert: 13.07.2026</span>
+      <span class="en">Last updated: July 13, 2026</span>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  function setLang(lang){
+    document.documentElement.classList.toggle('lang-en', lang === 'en');
+    document.documentElement.setAttribute('lang', lang);
+    document.getElementById('btn-de').setAttribute('aria-pressed', String(lang === 'de'));
+    document.getElementById('btn-en').setAttribute('aria-pressed', String(lang === 'en'));
+  }
+  if (!(navigator.language || '').toLowerCase().startsWith('de')) { setLang('en'); }
+</script>
+
+</body>
+</html>
